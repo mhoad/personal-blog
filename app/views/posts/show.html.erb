@@ -1,3 +1,4 @@
+<style type="text/css"><%= Pygments.css %></style>
 <main class="container">
   <div class="row">
     <div class="col-xs-12 single-content">
@@ -7,7 +8,7 @@
       </p>
       <h1><%= @post.title %></h1>
       <p class="subtitle">Like I said, never told...</p>
-      <p><%= raw @post.body %></p>
+      <%= markdown(@post.body) %>
     </div>  
   </div> <!--/row -->
 </main> <!-- /container -->
