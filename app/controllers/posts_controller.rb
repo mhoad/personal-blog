@@ -9,12 +9,13 @@ class PostsController < ApplicationController
   # New action for creating post
   def new
     @post = Post.new
+    render layout: 'single_post'
   end
 
   # Create action saves the post into database
   def create
-    @post = Post.new
-    if @post.save(post_params)
+    @post = Post.new(post_params)
+    if @post.save
       flash[:notice] = 'Successfully created post!'
       redirect_to post_path(@post)
     else
@@ -25,13 +26,14 @@ class PostsController < ApplicationController
 
   # Edit action retrives the post and renders the edit page
   def edit
+    render layout: 'single_post'
   end
 
   # Update action updates the post with the new information
   def update
     if @post.update_attributes(post_params)
       flash[:notice] = 'Successfully updated post!'
-      redirect_to post_path(@posts)
+      redirect_to post_path(@post)
     else
       flash[:alert] = 'Error updating post!'
       render :edit
@@ -40,7 +42,7 @@ class PostsController < ApplicationController
 
   # The show action renders the individual post after retrieving the the id
   def show
-    render layout: "single_post"
+    render layout: 'single_post'
   end
 
   # The destroy action removes the post permanently from the database
