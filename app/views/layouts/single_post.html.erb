@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Personal Blog</title>
+    <title>Personal Blog Single Post</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <%= csrf_meta_tags %>
@@ -17,11 +17,17 @@
 
   <body>
     <%= render "layouts/nojs_main_nav" %>
-    <main class="container left-container">
-      <div class="row">
-        <%= render "layouts/sidebar" %>
-        <%= yield %>
-      </div> <!--/row -->
-    </main> <!-- /container -->
+
+    <header class="hero-image" role="banner" style="background-image: url(<%= path_to_image("default-single-hero.jpg")%>);">
+      <span class="menu-trigger animated fadeInDown">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </span>
+      <%= render "layouts/js_main_nav" %>
+    </header>
+
+    <%= yield %>
+    
   </body>
 </html>
