@@ -32,6 +32,7 @@ gem 'font-awesome-rails'
 gem 'pygments.rb'
 gem 'redcarpet'
 gem 'simple_form'
+gem 'devise'
 
 
 group :development, :test do

@@ -9,6 +9,10 @@
       <h1><%= @post.title %></h1>
       <p class="subtitle">Like I said, never told...</p>
       <%= markdown(@post.body) %>
+      <% if admin_signed_in? %>
+        <%= link_to "Edit", edit_post_path(@post), class: "btn btn-default" %>
+        <%= link_to "Delete", post_path(@post), class: "btn btn-danger", data: {:confirm => "Are you sure?"}, method: :delete %>
+      <% end %>
     </div>  
   </div> <!--/row -->
 </main> <!-- /container -->
@@ -21,7 +25,12 @@
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="category-list">
-          <p>Published <span><%= @post.created_at.strftime('%b %d, %Y') %></span></p>
+          <p>
+            Originally Published: <span><%= @post.created_at.strftime('%b %d, %Y') %></span><br>
+            <% if(@post.created_at.strftime('%b %d, %Y') != @post.updated_at.strftime('%b %d, %Y')) %>
+              Last Updated: <span><%= @post.updated_at.strftime('%b %d, %Y') %></span>
+            <% end %>
+          </p>
           <p><a href="#">James Reddy</a> in <a href="#">Storytime</a></p>
 
           <div class="other-catergories">

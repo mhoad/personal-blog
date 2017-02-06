@@ -16,16 +16,12 @@
   </head>
 
   <body>
-    <% if !notice.nil? %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if !alert.nil? %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-    <%= render "layouts/nojs_main_nav" %>
-    <main class="container left-container">
-      <div class="row">
-        <%= render "layouts/sidebar" %>
+  <% if !notice.nil? %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if !alert.nil? %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
         <%= yield %>
       </div> <!--/row -->
     </main> <!-- /container -->
