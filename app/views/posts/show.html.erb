@@ -21,7 +21,11 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-2">
+        <% if admin_signed_in? %>
+          <%= image_tag(current_admin.avatar.url, class: "user-icon", alt: "post-image") %>  
+        <% else %>
         <%= image_tag("profile-1.jpg", class: "user-icon", alt: "post-image") %>
+        <% end %>
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="category-list">
