@@ -15,7 +15,6 @@
         <li><i class="fa fa-image"></i><a href="#">Category Page</a></li>
         <% if admin_signed_in? %>
         <!--This block is only visible to signed in admins -->
-          <li><%= link_to 'New Post', new_post_path %></li>
           <li><%= link_to 'My Account', edit_admin_registration_path  %></li>
           <li><%= link_to 'Logout', destroy_admin_session_path, :method => :delete %></li>
         <!-- The block ends here -->

@@ -16,12 +16,7 @@
   </head>
 
   <body>
-    <% if !notice.nil? %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if !alert.nil? %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
+    <%= render "layouts/flash_messages" %>
     <%= render "layouts/nojs_main_nav" %>
     <main class="container left-container">
       <div class="row">

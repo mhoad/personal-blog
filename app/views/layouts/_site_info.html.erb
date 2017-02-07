@@ -1,12 +1,13 @@
 <div class="site-info">
-    <div class="primary-info">
-        <h1>Mark Hoad</h1>
-        <p>
-            A blog covering my journey as a digital nomad, running a small 
-            marketing agency and launching a SaaS business.
-        </p>
+  <div class="primary-info">
+    <% if content_for? :sidebar_title %>
+      <h1><%= yield :sidebar_title %></h1>
+    <% end %>
+    <% if content_for? :sidebar_description %>
+      <p><%= yield :sidebar_description %></p>
+    <% end %>
 
-        <p><strong>Current Location:</strong> Manchester, UK</p>
+    <p><strong>Current Location:</strong> Manchester, UK</p>
     </div>
     <div class="secondary-info">
         <p>

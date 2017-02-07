@@ -1,0 +1,27 @@
+<% content_for :sidebar_title, "Categories" %>
+<% content_for :sidebar_description, "I tend to blog about a bunch of different topics so 
+                                      this is the place to check out specific categories" %>
+
+<section class="col-md-6 col-sm-12 col-md-offset-6 alt-main">
+  <div class="sub-nav">
+      <a href="#" >Categories</a>
+      <% if admin_signed_in? %>
+        <%= link_to 'Create Category', new_category_path %>
+      <% end %>
+  </div>
+
+  <div class="home-page-categories animated fadeIn ">
+    <div class="category row">
+      <section>
+        <% @categories.each do |category| %>
+          <div class="category-preview col-xs-6 col-sm-4 ">
+          <h2><%= category.name %></h2>
+          <%= link_to category_path(category) do %>
+            <%= image_tag("cover-2.jpg", alt: category.name) %>
+          <% end %>
+          </div>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</section>

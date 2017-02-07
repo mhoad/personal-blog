@@ -1,3 +1,7 @@
+<% content_for :sidebar_title, "Mark Hoad" %>
+<% content_for :sidebar_description, "A blog covering my journey as a digital nomad, 
+                                     running a small marketing agency and launching 
+                                     a SaaS business." %>
 <section class="col-md-7 col-sm-12 col-md-offset-5 main-content">
 
     <div class="sub-nav">
@@ -115,66 +119,14 @@
     <div class="home-page-categories hide animated fadeIn ">
         <div class="category row">
             <section>
+              <% @categories.each do |category| %>
                 <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Easy Living</h2>
-                    <a href="category.html"><%= image_tag("cover-2.jpg", alt: "category-image") %></a>
+                <h2><%= category.name %></h2>
+                <%= link_to category_path(category) do %>
+                  <%= image_tag("cover-2.jpg", alt: category.name) %>
+                <% end %>
                 </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Adventure</h2>
-                    <a href="category.html"><%= image_tag("cover-4.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Storytime</h2>
-                    <a href="category.html"><%= image_tag("cover-6.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Open Roads</h2>
-                        <a href="category.html"><%= image_tag("cover-9.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Gaming</h2>
-                    <a href="category.html"><%= image_tag("cover-1.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>City Life</h2>
-                        <a href="category.html"><%= image_tag("cover-3.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Rave Culture</h2>
-                        <a href="category.html"><%= image_tag("cover-5.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Photography</h2>
-                    <a href="category.html"><%= image_tag("cover-7.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Animal Kingdom</h2>
-                        <a href="category.html"><%= image_tag("cover-8.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Beach</h2>
-                    <a href="category.html"><%= image_tag("cover-10.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Climbing</h2>
-                        <a href="category.html"><%= image_tag("cover-11.jpg", alt: "category-image") %></a>
-                </div>
-
-                <div class="category-preview col-xs-6 col-sm-4 ">
-                    <h2>Mystery</h2>
-                        <a href="category.html"><%= image_tag("cover-12.jpg", alt: "category-image") %></a>
-                </div>
-
+              <% end %>
             </section>
         </div>
     </div>

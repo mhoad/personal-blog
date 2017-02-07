@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:edit, :update, :show, :delete]
   before_action :authenticate_admin!, except: [:index, :show]
-  #validate :title, presence: true
-  #validate :body, presence: true
 
   # Index action to render all posts
   def index
@@ -61,7 +59,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :category_id)
   end
 
   def find_post

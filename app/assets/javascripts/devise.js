@@ -10,11 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require modernizr.custom.32229-2.8-respondjs-1-4-2
 //= require jquery
 //= require jquery_ujs
-
-//= require jquery.jpanelmenu.min
 //= require bootstrap-sprockets
-//= require fastclick.min
-//= require main

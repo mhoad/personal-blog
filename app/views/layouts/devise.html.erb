@@ -8,22 +8,13 @@
     <meta name="viewport" content="width=device-width">
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <!--[if lt IE 9]>
-        <%= javascript_include_tag "html5shiv.min.js" %>
-    <![endif]-->
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'devise', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'devise', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <% if !notice.nil? %>
-    <p class="notice"><%= notice %></p>
-  <% end %>
-  <% if !alert.nil? %>
-    <p class="alert"><%= alert %></p>
-  <% end %>
-        <%= yield %>
-      </div> <!--/row -->
-    </main> <!-- /container -->
+    <%= render "layouts/flash_messages" %>
+      <%= yield %>
   </body>
 </html>

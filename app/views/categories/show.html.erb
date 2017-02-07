@@ -1,0 +1,6 @@
+<% content_for :sidebar_title, @category.name %>
+<% content_for :sidebar_description, @category.description %>
+
+<% if admin_signed_in? %>
+  <%= link_to 'Delete Category', category_path(@category), :method => :delete %>
+<% end %>
