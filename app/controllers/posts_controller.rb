@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:edit, :update, :show, :delete]
   before_action :authenticate_admin!, except: [:index, :show]
+  before_action :set_category
+  before_action :find_post, only: [:edit, :update, :show, :delete]
 
   # Index action to render all posts
   def index
@@ -9,18 +10,17 @@ class PostsController < ApplicationController
 
   # New action for creating post
   def new
-    @post = Post.new
-    render layout: 'single_post'
+    @post = @category.posts.build
   end
 
   # Create action saves the post into database
   def create
-    @post = Post.new(post_params)
+    @post = @category.posts.build(post_params)
     if @post.save
       flash[:notice] = 'Successfully created post!'
-      redirect_to post_path(@post)
+      redirect_to [@category, @post]
     else
-      flash[:alert] = 'Error creating new post!'
+      flash.now[:alert] = 'Error creating new post!'
       render :new
     end
   end
@@ -32,9 +32,9 @@ class PostsController < ApplicationController
 
   # Update action updates the post with the new information
   def update
-    if @post.update_attributes(post_params)
+    if @post.update(post_params)
       flash[:notice] = 'Successfully updated post!'
-      redirect_to post_path(@post)
+      redirect_to [@category, @post]
     else
       flash[:alert] = 'Error updating post!'
       render :edit
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   def destroy
     if @post.destroy
       flash[:notice] = 'Successfully deleted post!'
-      redirect_to posts_path
+      redirect_to @category
     else
       flash[:alert] = 'Error updating post!'
     end
@@ -59,10 +59,15 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :category_id)
+    # params.require(:post).permit(:title, :body, :category_id)
+    params.require(:post).permit(:title, :body)
   end
 
   def find_post
-    @post = Post.find(params[:id])
+    @post = @category.posts.find(params[:id])
+  end
+
+  def set_category
+    @category = Category.find(params[:category_id])
   end
 end

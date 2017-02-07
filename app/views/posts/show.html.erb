@@ -10,8 +10,8 @@
       <p class="subtitle">Like I said, never told...</p>
       <%= markdown(@post.body) %>
       <% if admin_signed_in? %>
-        <%= link_to "Edit", edit_post_path(@post), class: "btn btn-default" %>
-        <%= link_to "Delete", post_path(@post), class: "btn btn-danger", data: {:confirm => "Are you sure?"}, method: :delete %>
+        <%= link_to 'Edit', [:edit, @category, @post], class: 'btn btn-default'%>
+        <%= link_to "Delete", [@category, @post], class: "btn btn-danger", data: {:confirm => "Are you sure?"}, method: :delete %>
       <% end %>
     </div>  
   </div> <!--/row -->
@@ -21,11 +21,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-2">
-        <% if admin_signed_in? %>
-          <%= image_tag(current_admin.avatar.url, class: "user-icon", alt: "post-image") %>  
-        <% else %>
         <%= image_tag("profile-1.jpg", class: "user-icon", alt: "post-image") %>
-        <% end %>
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="category-list">

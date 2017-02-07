@@ -1,6 +1,29 @@
 <% content_for :sidebar_title, @category.name %>
 <% content_for :sidebar_description, @category.description %>
 
-<% if admin_signed_in? %>
-  <%= link_to 'Delete Category', category_path(@category), :method => :delete %>
-<% end %>
+<section class="col-md-7 col-sm-12 col-md-offset-5 main-content">
+  <div class="sub-nav">
+    <a href="#" class="select-posts active">Posts</a>
+    <% if admin_signed_in? %>
+      <%= link_to 'New Post', new_category_post_path(@category) %>
+      <%= link_to 'Delete Category', category_path(@category), :method => :delete %>
+    <% end %>
+  </div>
+
+  <div class="home-page-posts animated fadeIn ">
+    <% @category.posts.each do |post| %>
+      <article class="post">
+        <div class="post-preview col-xs-10  no-gutter">
+          <h2><%= link_to post.title, [@category, post] %></a></h2>
+          <p>It was a cold December morning, as I sat out on my porch I decided today was the day. </p>
+          <p class="meta">
+            Last Updated: <%= post.updated_at %> <i class="link-spacer"></i> <i class="fa fa-bookmark"></i> 23 minute read
+          </p>
+        </div>
+        <div class=" col-xs-2  no-gutter">
+          <%= image_tag("profile-1.jpg", class: "user-icon", alt: "user-image")%>
+        </div>
+      </article>
+    <% end %>
+  </div>
+</section>
