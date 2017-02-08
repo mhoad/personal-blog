@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   # Index action to render all posts
   def index
-    @posts = Post.all
+    redirect_to @category
   end
 
   # New action for creating post

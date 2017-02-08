@@ -17,7 +17,7 @@
           <h2><%= link_to post.title, [@category, post] %></a></h2>
           <p>It was a cold December morning, as I sat out on my porch I decided today was the day. </p>
           <p class="meta">
-            Last Updated: <%= post.updated_at %> <i class="link-spacer"></i> <i class="fa fa-bookmark"></i> 23 minute read
+            Last Updated: <%= post.updated_at.strftime('%b %d, %Y') %> <i class="link-spacer"></i> <i class="fa fa-bookmark"></i> 23 minute read
           </p>
         </div>
         <div class=" col-xs-2  no-gutter">
