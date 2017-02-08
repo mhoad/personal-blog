@@ -13,4 +13,13 @@ RSpec.describe 'Admin Sign In', type: :feature do
     click_button 'Sign in'
     expect(page).to have_content('Signed in successfully.')
   end
+
+  scenario 'Invalid credentials are rejected' do
+    fill_in 'Email', with: 'admin@example.com'
+    fill_in 'Password', with: 'guessed_your_password'
+    click_button 'Sign in'
+    expect(page).to_not have_content('Signed in successfully.')
+    expect(page).to have_content('Invalid Email or password.')
+    expect(page.current_path).to eq '/admins/sign_in'
+  end
 end

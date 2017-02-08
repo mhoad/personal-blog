@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_admin!, except: [:index, :show]
+  before_action :auth_admin!, except: [:index, :show]
   before_action :set_category
   before_action :find_post, only: [:edit, :update, :show, :delete]
 
@@ -69,5 +69,10 @@ class PostsController < ApplicationController
 
   def set_category
     @category = Category.find(params[:category_id])
+  end
+
+  def auth_admin!
+    set_category
+    redirect_to @category, alert: "You aren't allowed to do that." unless admin_signed_in?
   end
 end
