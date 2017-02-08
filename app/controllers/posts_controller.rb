@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :auth_admin!, except: [:index, :show]
   before_action :set_category
-  before_action :find_post, only: [:edit, :update, :show, :delete]
+  before_action :find_post, only: [:edit, :update, :show, :destroy]
 
   # Index action to render all posts
   def index
