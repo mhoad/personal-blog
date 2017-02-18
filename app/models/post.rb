@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
   belongs_to :category
 
+  before_validation :check_facebook_description
   before_save :calculate_reading_time
 
   private
@@ -21,5 +22,9 @@ class Post < ApplicationRecord
   def calculate_image_count
     # Find how many images are there in the post content
     body.scan(/<img([\w\W]+?)>/).size
+  end
+
+  def check_facebook_description
+    self.facebook_description = meta_description if facebook_description.blank?
   end
 end
