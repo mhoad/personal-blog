@@ -2,9 +2,13 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Personal Blog Single Post</title>
-    <meta name="description" content="">
+    <% if content_for? :meta_description %>
+      <meta name="description" content="<%= yield :meta_description %>">
+    <% end %>
+    <% if content_for? :facebook_description %>
+      <meta name="description" content="<%= yield :facebook_description %>">
+    <% end %>
     <meta name="viewport" content="width=device-width">
     <%= csrf_meta_tags %>
 

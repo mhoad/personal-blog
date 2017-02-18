@@ -1,10 +1,11 @@
+<% content_for :meta_description, @post.meta_description %>
 <style type="text/css"><%= Pygments.css %></style>
 <main class="container">
   <div class="row">
     <div class="col-xs-12 single-content">
       <p class="meta">
         <a class="" href="category.html">James Reddy</a> in <%= link_to @category.name, category_path(@category) %>
-        <i class="link-spacer"></i> <i class="fa fa-bookmark"></i> 23 minute read
+        <i class="link-spacer"></i> <i class="fa fa-bookmark"></i> <%= @post.reading_time %> minute read
       </p>
       <h1><%= @post.title %></h1>
       <p class="subtitle">Like I said, never told...</p>
