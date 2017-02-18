@@ -12,6 +12,8 @@ RSpec.describe 'New Posts', type: :feature do
     scenario 'create new post with valid attributes' do
       fill_in 'Title', with: 'Non-standards compliance'
       fill_in 'Body', with: 'My pages are ugly!'
+      fill_in 'Meta description', with: 'This is a nice little description of the post.'
+      fill_in 'Facebook description', with: 'I can have a different description of Facebook.'
       click_button 'Create Post'
 
       expect(page).to have_content 'Successfully created post!'

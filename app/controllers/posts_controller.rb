@@ -60,7 +60,7 @@ class PostsController < ApplicationController
 
   def post_params
     # params.require(:post).permit(:title, :body, :category_id)
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :facebook_description, :meta_description)
   end
 
   def find_post
