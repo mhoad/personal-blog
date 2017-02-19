@@ -59,12 +59,11 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    # params.require(:post).permit(:title, :body, :category_id)
     params.require(:post).permit(:title, :body, :facebook_description, :meta_description)
   end
 
   def find_post
-    @post = @category.posts.find(params[:id])
+    @post = @category.posts.friendly.find(params[:id])
   end
 
   def set_category

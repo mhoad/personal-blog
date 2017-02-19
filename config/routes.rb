@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get '/categories/:id/edit(.:format)', to: 'categories#edit', as: 'edit_category'
+
   resources :categories do
-    resources :posts
+    resources :posts, path: '', except: [:index]
+    get '/:friendly_id', to: 'posts#show', as: 'category_post'
   end
 
   devise_for :admins, skip: [:registrations]
