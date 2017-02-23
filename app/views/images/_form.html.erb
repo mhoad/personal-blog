@@ -1,0 +1,40 @@
+<%= simple_form_for @image do |f| %>
+  <% if @image.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= "#{pluralize(@image.errors.count, "error")} prohibited this image from being uploaded:" %>
+      </h2>
+      <ul>
+        <% @image.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.input :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :caption, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :licence, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :geo_location, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.file_field :image,  class: "form-control", label: "Upload an image" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.button :submit %>
+  </div>
+<% end %>

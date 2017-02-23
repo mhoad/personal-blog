@@ -11,4 +11,8 @@ RSpec.describe 'Categories', type: :model do
     it { expect(category).to validate_presence_of(:name) }
     it { expect(category).to validate_presence_of(:description) }
   end
+
+  describe 'ActiveModel Associations' do
+    it { expect(category).to have_many(:posts) }
+  end
 end

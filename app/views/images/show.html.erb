@@ -1,0 +1,10 @@
+<%= image_tag(@image.image) %>
+<p>
+  <%= @image.title %>
+</p>
+<p>
+  <%= @image.caption %>
+</p>
+
+<%= link_to "Edit Image", edit_image_path(@image) %>
+<%= link_to "Delete Image", image_path(@image), :method => :delete %>

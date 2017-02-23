@@ -11,4 +11,8 @@ RSpec.describe 'Posts', type: :model do
     it { expect(post).to validate_presence_of(:title) }
     it { expect(post).to validate_presence_of(:body) }
   end
+
+  describe 'ActiveModel Associations' do
+    it { expect(post).to belong_to(:category) }
+  end
 end
